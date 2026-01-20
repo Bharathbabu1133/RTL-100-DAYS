@@ -7,7 +7,6 @@ A testbench to verify the functionality using different input combinations
 🧩 Modules Description
 ## fulladd – 1-bit Full Adder (Dataflow Modeling)
 This module performs single-bit addition with carry-in.
-
 Inputs:
 a – First input bit
 b – Second input bit
