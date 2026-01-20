@@ -1,7 +1,6 @@
-
 # 4-bit Full Adder using Verilog
 
-## 📌 Overview
+## Overview
 
 This project implements a **4-bit Full Adder** using **Verilog HDL**.
 It demonstrates:
@@ -12,9 +11,9 @@ It demonstrates:
 
 ---
 
-## 🧩 Modules Description
+## Modules Description
 
-### 1️⃣ `fulladd` – 1-bit Full Adder (Dataflow Modeling)
+### `fulladd` – 1-bit Full Adder (Dataflow Modeling)
 
 This module performs single-bit addition with carry-in.
 
@@ -38,7 +37,7 @@ carry = (a & b) | (b & cin) | (a & cin)
 
 ---
 
-### 2️⃣ `full_add4` – 4-bit Full Adder (Structural Modeling)
+### `full_add4` – 4-bit Full Adder (Structural Modeling)
 
 This top module connects **four 1-bit full adders** in cascade to perform 4-bit addition.
 
@@ -60,7 +59,7 @@ This top module connects **four 1-bit full adders** in cascade to perform 4-bit 
 
 ---
 
-## 🧪 Testbench (`tb_full_add4`)
+## Testbench (`tb_full_add4`)
 
 The testbench verifies the functionality of the 4-bit full adder by applying multiple test cases.
 
@@ -82,7 +81,7 @@ The testbench verifies the functionality of the 4-bit full adder by applying mul
 
 ---
 
-## ⏱ Timescale
+## Timescale
 
 ```verilog
 `timescale 1ns/1ps
