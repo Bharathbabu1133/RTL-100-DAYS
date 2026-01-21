@@ -1,8 +1,3 @@
-## 📂 Repository Structure
-├── mux_4to1.v        # 4:1 Multiplexer RTL design
-├── tb_mux_4to1.v     # Testbench for verification
-└── README.md         # Project documentation
-
 ## 🧠 What is a 4:1 Multiplexer?
 
 A **4:1 multiplexer** selects **one of four input signals** and forwards it to a single output based on the value of the **2-bit select line**.
