@@ -20,7 +20,7 @@
 
 ---
 
-### 2️⃣ 4-Bit Full Adder (`full_add4`)
+### 4-Bit Full Adder (`full_add4`)
 
 **Modeling Style:** Structural (Gate-Level using instantiation)
 
@@ -63,7 +63,7 @@ The testbench:
 
 ---
 
-## ▶️ How to Run the Simulation
+## How to Run the Simulation
 
 1. Open a Verilog simulator (ModelSim / QuestaSim / Vivado / Icarus Verilog)
 2. Compile all design and testbench files
@@ -72,7 +72,7 @@ The testbench:
 
 ---
 
-## 📈 Sample Output Format
+## Sample Output Format
 
 ```
 Time   a      b      cin   sum    cout
