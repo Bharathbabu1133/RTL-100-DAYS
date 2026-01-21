@@ -71,8 +71,6 @@ d = 0111
 | 10  | 1 |
 | 11  | 0 |
 
----
-
 ## ▶️ How to Simulate
 
 1. Open any Verilog simulator:
@@ -87,8 +85,6 @@ d = 0111
 3. Run the simulation
 4. Observe output in console or waveform window
 
----
-
 ## 📈 Sample Simulation Output
 
 ```
@@ -97,9 +93,3 @@ Time   sel   d      y
 10     01    1010   1
 20     10    1010   0
 30     11    1010   1
-```
-
-
-
-Just tell me 😊
-
