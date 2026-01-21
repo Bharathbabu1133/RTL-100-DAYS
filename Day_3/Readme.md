@@ -1,8 +1,8 @@
-## 🧠 What is a 4:1 Multiplexer?
+## What is a 4:1 Multiplexer?
 
 A **4:1 multiplexer** selects **one of four input signals** and forwards it to a single output based on the value of the **2-bit select line**.
 
-## 🔧 Design Details
+## Design Details
 
 ### Module: `mux_4to1`
 
@@ -19,7 +19,7 @@ A **4:1 multiplexer** selects **one of four input signals** and forwards it to a
 
 ---
 
-### 🔁 Selection Logic
+### Selection Logic
 
 | `sel` | Selected Input |
 | ----- | -------------- |
@@ -43,7 +43,7 @@ The testbench:
 
 ---
 
-### ✅ Test Cases
+### Test Cases
 
 #### Case 1
 
@@ -71,7 +71,7 @@ d = 0111
 | 10  | 1 |
 | 11  | 0 |
 
-## ▶️ How to Simulate
+## How to Simulate
 
 1. Open any Verilog simulator:
 
@@ -85,7 +85,7 @@ d = 0111
 3. Run the simulation
 4. Observe output in console or waveform window
 
-## 📈 Sample Simulation Output
+##  Sample Simulation Output
 
 ```
 Time   sel   d      y
