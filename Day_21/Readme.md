@@ -1,41 +1,115 @@
-## Overview
+## What is a Synchronous Reset?
 
-This project implements an **8-bit D Flip-Flop** that is **negative-edge triggered** and includes a **synchronous reset**. On every falling edge of the clock (`negedge clk`), the flip-flop either loads the input data or resets to a predefined value based on the reset signal.
+A **synchronous reset** resets the flip-flop **only at the active clock edge**.
+Unlike an asynchronous reset, changes in `rst` **do not affect the output immediately**.
+The reset takes effect **only when the clock edge occurs**.
 
-## Design Details
+In this design, the reset is applied on the **negative edge of the clock**.
 
-* **Triggering**: Negative edge of the clock
-* **Reset Type**: Synchronous reset
-* **Reset Value**: `8'h34`
-* **Data Width**: 8 bits
+---
 
-### Behavior
+## Operation
 
-* When `rst = 1`, output `q` is set to `8'h34` on the **negedge of clk**
-* When `rst = 0`, output `q` follows input `d` on the **negedge of clk**
+| Clock Edge | Reset (rst) | D (8-bit) | Q (8-bit)        |
+| ---------- | ----------- | --------- | ---------------- |
+| ↓ CLK      | 1           | X         | 00110100 (8'h34) |
+| ↓ CLK      | 0           | d         | d                |
+| No edge    | X           | X         | Hold             |
 
-## Testbench Description
+---
 
-The testbench verifies:
+## Module Details
 
-* Clock generation with a 10 ns period
-* Proper reset functionality
-* Correct data capture on negative clock edges
-* Reset assertion during normal operation
+### Module Name
 
-The `$monitor` statement tracks `clk`, `rst`, `d`, and `q` throughout simulation.
+`dff_8_sync_reset_neg`
 
-## Files Included
+### Inputs
 
-* `dff_8_sync_reset_neg.v` – RTL design module
-* `tb_dff_8_sync_reset_neg.v` – Testbench for simulation
-* `README.md` – Project documentation
+* `clk` → Clock (**negative edge triggered**)
+* `rst` → Synchronous reset (**active high**)
+* `d [7:0]` → 8-bit data input
 
-## Simulation
+### Output
 
-You can simulate this design using tools like:
+* `q [7:0]` → 8-bit stored output
 
-* ModelSim
-* QuestaSim
-* Vivado Simulator
-* Icarus Verilog
+---
+
+## RTL Logic Explanation
+
+```verilog
+always @(negedge clk) begin
+    if (rst)
+        q <= 8'h34;
+    else
+        q <= d;
+end
+```
+
+* Reset is checked **inside the clocked always block**
+* Output resets **only on the negative edge of the clock**
+* Reset value is **8'h34**
+* Uses **non-blocking assignment (`<=`)**, which is recommended for sequential logic
+
+---
+
+## Testbench (`tb_dff_8_sync_reset_neg`)
+
+### Clock Generation
+
+```verilog
+forever #5 clk = ~clk;
+```
+
+✔ Generates a **10 ns clock period**
+
+---
+
+### Test Sequence
+
+* Reset asserted at the beginning
+* Data patterns applied:
+
+  * `00`
+  * `AA`
+  * `55`
+  * `FF`
+* Reset asserted again during normal operation
+* Reset de-asserted and data resumes
+
+---
+
+### Monitoring
+
+```verilog
+$monitor("time=%0t clk=%b rst=%b d=%h q=%h",
+          $time, clk, rst, d, q);
+```
+
+✔ Displays real-time signal changes during simulation
+
+---
+
+## How to Simulate
+
+1. Open a Verilog simulator (ModelSim / Vivado / Icarus Verilog)
+2. Compile:
+
+   * `dff_8_sync_reset_neg.v`
+   * `tb_dff_8_sync_reset_neg.v`
+3. Run the simulation
+4. Observe waveform or console output
+
+---
+
+## Sample Simulation Output
+
+```
+time=0  clk=0 rst=1 d=00 q=34
+time=10 clk=1 rst=0 d=00 q=34
+time=20 clk=0 rst=0 d=AA q=AA
+time=30 clk=0 rst=0 d=55 q=55
+time=40 clk=0 rst=1 d=55 q=34
+time=50 clk=0 rst=0 d=FF q=FF
+
